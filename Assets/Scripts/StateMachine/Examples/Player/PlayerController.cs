@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour
     }
     public void DownJump()
     {
-        rb.velocity = new Vector2(0, -1 * JumpForce);
+        rb.velocity = new Vector2(rb.velocity.x, -1 * JumpForce);
     }
 
     public void RightDesh()
@@ -89,17 +89,13 @@ public class PlayerController : MonoBehaviour
 
     public void BrakePlayerFall()
     {
-        if (rb.velocity.y < 0)
+        if (rb.velocity.y < 0 && !Input.GetKeyDown(KeyCode.LeftShift))
         {
             if (rb.velocity.magnitude >= maxDownSpeed)
             {
-                
                 rb.velocity = rb.velocity.normalized * MaxDownSpeed;
             }
-            
         }
-        
-        
     }
 
     private void OnCollisionEnter2D(Collision2D other)

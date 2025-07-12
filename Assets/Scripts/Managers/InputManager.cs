@@ -14,6 +14,7 @@ public class InputManager : Singleton<InputManager>
     public event Action OnLeftClickReleased;
     public event Action OnRightClickPressed;
     
+    
     // Настройки чувствительности
     [Header("Настройки ввода")]
     public float mouseSensitivity = 1f;
