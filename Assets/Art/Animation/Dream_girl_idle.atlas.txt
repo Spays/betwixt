@@ -1,0 +1,90 @@
+
+Dream_girl_idle.png
+size: 1190,958
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Dress Down
+  rotate: false
+  xy: 2, 8
+  size: 466, 448
+  orig: 466, 448
+  offset: 0, 0
+  index: -1
+Dress Up
+  rotate: false
+  xy: 470, 83
+  size: 359, 378
+  orig: 489, 1408
+  offset: 96, 866
+  index: -1
+Hand
+  rotate: true
+  xy: 561, 816
+  size: 140, 265
+  orig: 140, 265
+  offset: 0, 0
+  index: -1
+Hand 1
+  rotate: true
+  xy: 470, 2
+  size: 79, 259
+  orig: 79, 259
+  offset: 0, 0
+  index: -1
+Hip
+  rotate: true
+  xy: 831, 781
+  size: 175, 357
+  orig: 175, 357
+  offset: 0, 0
+  index: -1
+Hip 1
+  rotate: true
+  xy: 831, 582
+  size: 197, 352
+  orig: 198, 353
+  offset: 0, 0
+  index: -1
+Leg
+  rotate: false
+  xy: 847, 107
+  size: 160, 473
+  orig: 160, 473
+  offset: 0, 0
+  index: -1
+Leg 1
+  rotate: false
+  xy: 1009, 109
+  size: 178, 471
+  orig: 179, 471
+  offset: 1, 0
+  index: -1
+Rope 1
+  rotate: true
+  xy: 561, 465
+  size: 115, 284
+  orig: 115, 284
+  offset: 0, 0
+  index: -1
+Rope 2
+  rotate: false
+  xy: 2, 458
+  size: 299, 498
+  orig: 299, 498
+  offset: 0, 0
+  index: -1
+Rope 3
+  rotate: false
+  xy: 303, 463
+  size: 256, 493
+  orig: 256, 493
+  offset: 0, 0
+  index: -1
+Tail Face
+  rotate: true
+  xy: 561, 584
+  size: 230, 244
+  orig: 233, 244
+  offset: 0, 0
+  index: -1
