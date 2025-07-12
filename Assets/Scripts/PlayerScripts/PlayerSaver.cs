@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStats : Singleton<PlayerStats>
+public class PlayerSaver : Singleton<PlayerSaver>
 {
     public static PlayerStats Instance;
     
@@ -13,19 +13,29 @@ public class PlayerStats : Singleton<PlayerStats>
     public int playerCristalTeleportation = 0;
     public int playerCloudTeleportation = 0;
     public int playerMaxEssention = 3;
-    public int essenceDoorstep = 10;
-    public GameObject[] teleportPoints;
     
     void Awake()
     {
         if (Instance == null)
         {
-            Instance = this;
+            //Instance = this;
             DontDestroyOnLoad(gameObject); // Чтобы не уничтожался при переключении сцен
         }
         else
         {
             Destroy(gameObject);
         }
+    }
+   
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
     }
 }

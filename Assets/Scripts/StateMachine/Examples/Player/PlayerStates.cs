@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 //_______________________________________
 //состояние на земле
@@ -8,6 +9,8 @@ public class PlayerOnGroundState : IState
 {
     private PlayerController player;
     private float jumpTimer = 0f;
+    
+    
 
     public PlayerOnGroundState(PlayerController player)
     {
@@ -55,7 +58,7 @@ public class PlayerOnFlyState : IState
     private PlayerController player;
     private float jumpTimer = 0f;
     private bool JumpFlag;
-
+    private int StepFlag = 0;
     public PlayerOnFlyState(PlayerController player)
     {
         this.player = player;
@@ -98,6 +101,27 @@ public class PlayerOnFlyState : IState
         {
             player.DownJump();
             Debug.Log("Прыжок вниз");
+            //JumpFlag = false;
+        }
+        else if (Input.GetKeyDown(KeyCode.T))
+        {
+            if(PlayerStats.Instance.playerFlowerTeleportation >= PlayerStats.Instance.essenceDoorstep)
+            {
+                
+
+                if (StepFlag < PlayerStats.Instance.teleportPoints.Length-1)
+                {
+                    player.transform.position = PlayerStats.Instance.teleportPoints[StepFlag].transform.position;
+                    StepFlag++;
+                }
+                else
+                {
+                    player.transform.position = PlayerStats.Instance.teleportPoints[StepFlag].transform.position;
+                    StepFlag = 0;
+                }
+                
+            }
+            Debug.Log("Телепорт");
             //JumpFlag = false;
         }
         //зависание
