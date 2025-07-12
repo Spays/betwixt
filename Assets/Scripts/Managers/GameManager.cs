@@ -10,7 +10,8 @@ public class GameManager : Singleton<GameManager>
         MainMenu = 0,
         Playing = 1,
         Paused = 2,
-        GameOver = 3,
+        GameOver = 4,
+        QTEBattle = 3
     }
     
     public Config1 Config;

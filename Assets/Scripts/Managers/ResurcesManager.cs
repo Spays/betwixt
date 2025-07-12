@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Resurces;
@@ -17,6 +18,17 @@ public class ResurcesManager : Singleton<ResurcesManager>
       TeleportCloudRecurce.SendMessage += AddResurces;
       TeleportCristalResurce.SendMessage += AddResurces;
       TeleportFlowerResurce.SendMessage += AddResurces;
+   }
+
+   private void OnDisable()
+   {
+      HealResurce.SendMessage -= AddResurces;
+      DamageResurce.SendMessage -= AddResurces;
+      EssenceResurs.SendMessage -= AddResurces;
+      EssenceBoxResurce.SendMessage -= AddResurces;
+      TeleportCloudRecurce.SendMessage -= AddResurces;
+      TeleportCristalResurce.SendMessage -= AddResurces;
+      TeleportFlowerResurce.SendMessage -= AddResurces;
    }
 
    public void AddResurces(int[] IndexMass)

@@ -1,4 +1,5 @@
-using UnityEngine;
+using System;
+using Unity.VisualScripting;using UnityEngine;
 using UnityEngine.SceneManagement;
 
 //_______________________________________
@@ -59,6 +60,14 @@ public class PlayerOnFlyState : IState
     private float jumpTimer = 0f;
     private bool JumpFlag;
     private int StepFlag = 0;
+    
+    public static event Action OnTeleported;
+
+    public void OnLoad()
+    {
+        
+    }
+    
     public PlayerOnFlyState(PlayerController player)
     {
         this.player = player;
@@ -119,7 +128,10 @@ public class PlayerOnFlyState : IState
                     player.transform.position = PlayerStats.Instance.teleportPoints[StepFlag].transform.position;
                     StepFlag = 0;
                 }
-                
+
+                OnTeleported();
+
+                PlayerStats.Instance.playerFlowerTeleportation -= PlayerStats.Instance.teleportTax;
             }
             Debug.Log("Телепорт");
             //JumpFlag = false;

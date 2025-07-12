@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerStats : Singleton<PlayerStats>
 {
@@ -10,14 +11,43 @@ public class PlayerStats : Singleton<PlayerStats>
     public int playerKillPower = 100;
     public int playerEssention = 0;
     public int playerFlowerTeleportation = 0;
-    public int playerCristalTeleportation = 0;
-    public int playerCloudTeleportation = 0;
-    public int playerMaxEssention = 3;
+    [HideInInspector]public int playerCristalTeleportation = 0;
+    [HideInInspector]public int playerCloudTeleportation = 0;
+    [HideInInspector]public int playerMaxEssention = 3;
     public int essenceDoorstep = 10;
+    public int WinCount = 100;
+
+    public int teleportTax;
+    
     public GameObject[] teleportPoints;
+    
+    private void OnEnable()
+    {
+        WinCheck.BattleCheck += WinUpdate;
+
+    }
+
+    public void OnDisable()
+    {
+        WinCheck.BattleCheck -= WinUpdate;
+    }
+    
+    public void WinUpdate()
+    {
+        if (playerEssention < WinCount)
+        {
+            SceneManager.LoadScene(0);
+            Debug.Log("YouLoose!!!!");
+        }
+        else
+        {
+            Debug.Log("YouWin!!!!");
+        }
+    }
     
     void Awake()
     {
+        /*
         if (Instance == null)
         {
             Instance = this;
@@ -27,5 +57,6 @@ public class PlayerStats : Singleton<PlayerStats>
         {
             Destroy(gameObject);
         }
+        */
     }
 }

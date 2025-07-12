@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
+using UnityEngine.SceneManagement;
 
 public class PlayerSaver : Singleton<PlayerSaver>
 {
@@ -13,7 +15,19 @@ public class PlayerSaver : Singleton<PlayerSaver>
     public int playerCristalTeleportation = 0;
     public int playerCloudTeleportation = 0;
     public int playerMaxEssention = 3;
+    public int WinCount = 100;
     
+    
+    private void OnEnable()
+    {
+        WinCheck.BattleCheck += WinUpdate;
+
+    }
+
+    public void OnDisable()
+    {
+        WinCheck.BattleCheck -= WinUpdate;
+    }
     void Awake()
     {
         if (Instance == null)
@@ -24,6 +38,18 @@ public class PlayerSaver : Singleton<PlayerSaver>
         else
         {
             Destroy(gameObject);
+        }
+    }
+
+    public void WinUpdate()
+    {
+        if (PlayerStats.Instance.playerEssention < WinCount)
+        {
+            SceneManager.LoadScene(SceneManager.sceneCount);
+        }
+        else
+        {
+            Debug.Log("YouWin!!!!");
         }
     }
    
