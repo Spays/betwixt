@@ -8,11 +8,13 @@ public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     {
         if (Instance == null)
         {
+            Debug.Log("New instance: " + this);
             Instance = this as T;
             DontDestroyOnLoad(gameObject);
         }
         else if (Instance != this)
         {
+            Debug.Log("uplicate instance: " + this);
             Destroy(gameObject);
         }
     }

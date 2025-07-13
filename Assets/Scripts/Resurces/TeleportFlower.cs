@@ -10,14 +10,7 @@ namespace Resurces
         public static event Action<int[]> SendMessage;
         
         public int resursIndex
-        {
-            get { return _resursIndex; }
-            set
-            {
-                _resursIndex = value;
-                //OnChange?.Invoke(_resursIndex);
-            }
-        }
+        { get; set; }
 
         [field: SerializeField] public int resursValue { get; set; }
         
