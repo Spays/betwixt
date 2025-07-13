@@ -16,7 +16,7 @@ namespace Resurces
         
         public void OnTriggerEnter2D(Collider2D other)
         {
-            SendMessage?.Invoke(new int[2]{resursIndex, resursValue});
+            SendMessage?.Invoke(new int[2]{_resursIndex, resursValue});
             Debug.Log("Flower increased " + resursValue);
             SelfKill();
         }

@@ -86,5 +86,4 @@ public class ResurcesManager : Singleton<ResurcesManager>
             break;
       }
    }
-
 }
