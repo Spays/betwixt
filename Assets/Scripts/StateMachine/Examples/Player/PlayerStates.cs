@@ -62,11 +62,6 @@ public class PlayerOnFlyState : IState
     private int StepFlag = 0;
     
     public static event Action OnTeleported;
-
-    public void OnLoad()
-    {
-        
-    }
     
     public PlayerOnFlyState(PlayerController player)
     {
@@ -114,6 +109,7 @@ public class PlayerOnFlyState : IState
         }
         else if (Input.GetKeyDown(KeyCode.T))
         {
+            Debug.Log(PlayerStats.Instance);
             if(PlayerStats.Instance.playerFlowerTeleportation >= PlayerStats.Instance.essenceDoorstep)
             {
                 
@@ -131,7 +127,7 @@ public class PlayerOnFlyState : IState
 
                 OnTeleported();
 
-                PlayerStats.Instance.playerFlowerTeleportation -= PlayerStats.Instance.teleportTax;
+                PlayerStats.Instance.playerFlowerTeleportation = PlayerStats.Instance.playerFlowerTeleportation - PlayerStats.Instance.teleportTax;
             }
             Debug.Log("Телепорт");
             //JumpFlag = false;

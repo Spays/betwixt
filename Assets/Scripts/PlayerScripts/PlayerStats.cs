@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class PlayerStats : Singleton<PlayerStats>
 {
-    public static PlayerStats Instance;
-    
     public int playerHP = 100;
     public int playerKillPower = 100;
     public int playerEssention = 0;
@@ -43,20 +41,5 @@ public class PlayerStats : Singleton<PlayerStats>
         {
             Debug.Log("YouWin!!!!");
         }
-    }
-    
-    void Awake()
-    {
-        /*
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject); // Чтобы не уничтожался при переключении сцен
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-        */
     }
 }
