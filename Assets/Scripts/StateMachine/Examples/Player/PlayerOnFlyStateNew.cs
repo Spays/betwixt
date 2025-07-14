@@ -57,7 +57,7 @@ public class PlayerOnFlyStateNew : MonoBehaviour
     private int StepFlag = 0;
     private void Update()
     {
-        if (controls.Player.Teleport.WasPressedThisFrame())
+        if (isGrounded == false && controls.Player.Teleport.WasPressedThisFrame())
         {
             Debug.Log(PlayerStats.Instance);
             if(PlayerStats.Instance.playerFlowerTeleportation >= PlayerStats.Instance.essenceDoorstep)
@@ -138,6 +138,12 @@ public class PlayerOnFlyStateNew : MonoBehaviour
         if (isGrounded)
         {
             rb.velocity = new Vector2(0f, rb.velocity.y);
+            
+            // НОВАЯ ЛОГИКА: Разворот на земле по вводу (без движения)
+            if (Mathf.Abs(horizontalInput) > 0.01f) // Небольшой порог, чтобы избежать jitter
+            {
+                skeletonAnimation.skeleton.ScaleX = Mathf.Sign(horizontalInput);
+            }
         }
 
         // Handle primary jump (with coyote, buffer, and cooldown)
@@ -194,8 +200,8 @@ public class PlayerOnFlyStateNew : MonoBehaviour
         // Reset jump request at the end of FixedUpdate to catch any missed inputs
         jumpRequested = false;
         
-        // Flip based on movement direction (разворот при изменении направления движения по X)
-        if (Mathf.Abs(rb.velocity.x) > 0.01f) // Небольшой порог, чтобы избежать изменений при нулевой скорости
+        // Flip based on movement direction (разворот при изменении направления движения по X) — только в воздухе
+        if (!isGrounded && Mathf.Abs(rb.velocity.x) > 0.01f) // Небольшой порог, чтобы избежать изменений при нулевой скорости
         {
             skeletonAnimation.skeleton.ScaleX = Mathf.Sign(rb.velocity.x);
         }
