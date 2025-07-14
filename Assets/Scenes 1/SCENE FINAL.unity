@@ -600,6 +600,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3776646245067306245, guid: bed230c66968be94d845df8671267479, type: 3}
+      propertyPath: CameraTpPoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 1673573076}
+    - target: {fileID: 3776646245067306245, guid: bed230c66968be94d845df8671267479, type: 3}
+      propertyPath: CameraTpPoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 1258456075}
+    - target: {fileID: 3776646245067306245, guid: bed230c66968be94d845df8671267479, type: 3}
+      propertyPath: CameraTpPoints.Array.data[2]
+      value: 
+      objectReference: {fileID: 411404580}
+    - target: {fileID: 3776646245067306245, guid: bed230c66968be94d845df8671267479, type: 3}
+      propertyPath: CameraTpPoints.Array.data[3]
+      value: 
+      objectReference: {fileID: 803462088}
+    - target: {fileID: 3776646245067306245, guid: bed230c66968be94d845df8671267479, type: 3}
+      propertyPath: CameraTpPoints.Array.data[4]
+      value: 
+      objectReference: {fileID: 2109434565}
     - target: {fileID: 5865083139866760050, guid: bed230c66968be94d845df8671267479, type: 3}
       propertyPath: m_Name
       value: Main Camera
@@ -1065,10 +1085,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 998892938871628101, guid: b9d4d4af8b6940247b17cabd8b5a655b, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3435928618565702708, guid: b9d4d4af8b6940247b17cabd8b5a655b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 40.92992
@@ -1108,14 +1124,6 @@ PrefabInstance:
     - target: {fileID: 3435928618565702708, guid: b9d4d4af8b6940247b17cabd8b5a655b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3857068133989902406, guid: b9d4d4af8b6940247b17cabd8b5a655b, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4524142596348886110, guid: b9d4d4af8b6940247b17cabd8b5a655b, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6548745362831463547, guid: b9d4d4af8b6940247b17cabd8b5a655b, type: 3}
       propertyPath: m_Name
