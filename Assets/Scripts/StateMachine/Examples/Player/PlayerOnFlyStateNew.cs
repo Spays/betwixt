@@ -1,36 +1,27 @@
+using System;
+using Player;
 using Spine.Unity;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerOnFlyStateNew : MonoBehaviour
 {
-    // Inspector variables
-    [Header("Movement")]
-    [SerializeField] private float airAcceleration = 10f; // How fast to accelerate horizontally in air
-    [SerializeField] private float maxAirSpeed = 5f; // Max horizontal speed in air
-
-    [Header("Jumping")]
-    [SerializeField] private float jumpForce = 10f; // Initial upward force for jump
-    [SerializeField] private float doubleJumpForce = 8f; // Upward force for double jump (usually slightly less than jumpForce)
-    [SerializeField] private bool enableDoubleJump = true; // Enable/disable double jump feature
-    [SerializeField] private float jumpCutMultiplier = 0.5f; // Reduce velocity when jump button released (for variable height)
-    [SerializeField] private float risingGravityScale = 1f; // Gravity multiplier when going up (lower for floatier jumps)
-    [SerializeField] private float fallingGravityScale = 2f; // Gravity multiplier when falling (higher for snappier descent)
-
+    [SerializeField] private PlayerConfig _playerConfig;
+    
     [Header("Ground Check")]
     [SerializeField] private Transform groundCheck; // Position to check for ground (e.g., feet)
-    [SerializeField] private float groundCheckRadius = 0.1f; // Radius of overlap circle
+    [SerializeField] private Vector2 groundCheckSize = new Vector2(0.2f, 0.1f); // Size of the overlap box (width, height)
     [SerializeField] private LayerMask groundLayer; // LayerMask for ground objects
-
-    [Header("Timers")]
-    [SerializeField] private float coyoteTime = 0.1f; // Time after leaving ground to still jump
-    [SerializeField] private float jumpBufferTime = 0.1f; // Time to buffer jump input before landing
-
+    
+    public static event Action OnTeleported;
+    
     // Private variables
     private Rigidbody2D rb;
     private bool isGrounded;
+    private bool wasGrounded; // Tracks previous grounded state to detect landing
     private float coyoteTimer;
     private float jumpBufferTimer;
+    private float jumpCooldownTimer; // Timer for jump cooldown after landing
     private bool isJumping;
     private bool canDoubleJump; // Tracks if double jump is available
     private bool jumpRequested; // Flag to reliably capture jump input across frames
@@ -40,6 +31,7 @@ public class PlayerOnFlyStateNew : MonoBehaviour
     private string currentAnimation; // Для предотвращения повторного сета одной анимации
 
     private PlayerInputActions controls;
+    private float horizontalInput; // Хранение ввода по горизонтали (читаем в Update)
     
     private void Awake()
     {
@@ -47,6 +39,8 @@ public class PlayerOnFlyStateNew : MonoBehaviour
         
         controls = new PlayerInputActions();
         controls.Player.Enable(); // Включаем Action Map "Player"
+        
+        skeletonAnimation.skeleton.ScaleX = 1f; // Начальное направление (вправо)
         
         // var animations = skeletonAnimation.skeleton.Data.Animations; // Получаем коллекцию анимаций
         // Debug.Log("Available animations:");
@@ -60,13 +54,38 @@ public class PlayerOnFlyStateNew : MonoBehaviour
         // }
     }
 
+    private int StepFlag = 0;
     private void Update()
     {
+        if (controls.Player.Teleport.WasPressedThisFrame())
+        {
+            Debug.Log(PlayerStats.Instance);
+            if(PlayerStats.Instance.playerFlowerTeleportation >= PlayerStats.Instance.essenceDoorstep)
+            {
+                if (StepFlag < PlayerStats.Instance.teleportPoints.Length-1)
+                {
+                    transform.position = PlayerStats.Instance.teleportPoints[StepFlag].transform.position;
+                    StepFlag++;
+                }
+                else
+                {
+                    transform.position = PlayerStats.Instance.teleportPoints[StepFlag].transform.position;
+                    StepFlag = 0;
+                }
+
+                OnTeleported();
+
+                PlayerStats.Instance.playerFlowerTeleportation = PlayerStats.Instance.playerFlowerTeleportation - PlayerStats.Instance.teleportTax;
+            }
+            Debug.Log("Телепорт");
+            return;
+        }
+        
         // Handle jump input
         if (controls.Player.Jump.WasPressedThisFrame())
         {
             jumpRequested = true;
-            jumpBufferTimer = jumpBufferTime;
+            jumpBufferTimer = _playerConfig.jumpBufferTime;
         }
 
         // Reduce buffer timer
@@ -78,19 +97,35 @@ public class PlayerOnFlyStateNew : MonoBehaviour
         // Variable jump height: Cut jump if button released while ascending
         if (controls.Player.Jump.WasReleasedThisFrame() && isJumping && rb.velocity.y > 0f)
         {
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * jumpCutMultiplier);
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * _playerConfig.jumpCutMultiplier);
         }
+        
+        // Чтение горизонтального ввода (для движения и разворота)
+        horizontalInput = controls.Player.Move.ReadValue<float>();
     }
 
     private void FixedUpdate()
     {
         // Ground check
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+        isGrounded = Physics2D.OverlapBox(groundCheck.position, groundCheckSize, 0f, groundLayer) != null;
         
+        // Detect landing and start cooldown timer
+        if (!wasGrounded && isGrounded)
+        {
+            jumpCooldownTimer = _playerConfig.jumpCooldown; // Start cooldown on landing
+        }
+        wasGrounded = isGrounded; // Update previous state
+
+        // Reduce cooldown timer
+        if (jumpCooldownTimer > 0f)
+        {
+            jumpCooldownTimer -= Time.fixedDeltaTime;
+        }
+
         // Coyote time logic and double jump reset
         if (isGrounded)
         {
-            coyoteTimer = coyoteTime;
+            coyoteTimer = _playerConfig.coyoteTime;
             isJumping = false;
             canDoubleJump = true; // Reset double jump on ground
         }
@@ -105,11 +140,11 @@ public class PlayerOnFlyStateNew : MonoBehaviour
             rb.velocity = new Vector2(0f, rb.velocity.y);
         }
 
-// Handle primary jump (with coyote and buffer)
-        bool canPrimaryJump = (isGrounded || coyoteTimer > 0f) && jumpBufferTimer > 0f;
+        // Handle primary jump (with coyote, buffer, and cooldown)
+        bool canPrimaryJump = (isGrounded || coyoteTimer > 0f) && jumpBufferTimer > 0f && jumpCooldownTimer <= 0f;
         if (canPrimaryJump)
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            rb.velocity = new Vector2(rb.velocity.x, _playerConfig.jumpForce);
             isJumping = true;
             coyoteTimer = 0f; // Consume coyote time
             jumpBufferTimer = 0f; // Consume buffer
@@ -117,17 +152,17 @@ public class PlayerOnFlyStateNew : MonoBehaviour
             hasDoubleJumped = false; // Сброс флага двойного прыжка
         }
 
-// Handle double jump (if enabled, available, and requested)
-        if (enableDoubleJump && canDoubleJump && jumpRequested && !isGrounded && !canPrimaryJump)
+        // Handle double jump (if enabled, available, and requested)
+        if (_playerConfig.enableDoubleJump && canDoubleJump && jumpRequested && !isGrounded && !canPrimaryJump)
         {
-            rb.velocity = new Vector2(rb.velocity.x, doubleJumpForce);
+            rb.velocity = new Vector2(rb.velocity.x, _playerConfig.doubleJumpForce);
             isJumping = true;
             canDoubleJump = false; // Consume double jump
             jumpRequested = false; // Reset request after handling
             hasDoubleJumped = true; // Устанавливаем флаг двойного прыжка
         }
 
-// Если на земле, сброс флага двойного прыжка (добавьте после if (isGrounded) { rb.velocity = new Vector2(0f, rb.velocity.y); })
+        // Если на земле, сброс флага двойного прыжка (добавьте после if (isGrounded) { rb.velocity = new Vector2(0f, rb.velocity.y); })
         if (isGrounded)
         {
             hasDoubleJumped = false;
@@ -136,9 +171,8 @@ public class PlayerOnFlyStateNew : MonoBehaviour
         // Aerial horizontal movement
         if (!isGrounded)
         {
-            float horizontalInput = controls.Player.Move.ReadValue<float>(); // Чтение оси (float от -1 до 1)
-            float targetVelocityX = horizontalInput * maxAirSpeed;
-            float acceleration = airAcceleration * Time.fixedDeltaTime;
+            float targetVelocityX = horizontalInput * _playerConfig.maxAirSpeed;
+            float acceleration = _playerConfig.airAcceleration * Time.fixedDeltaTime;
     
             // Smoothly accelerate towards target
             rb.velocity = new Vector2(
@@ -150,15 +184,21 @@ public class PlayerOnFlyStateNew : MonoBehaviour
         // Gravity manipulation for better feel
         if (rb.velocity.y > 0f && isJumping)
         {
-            rb.gravityScale = risingGravityScale;
+            rb.gravityScale = _playerConfig.risingGravityScale;
         }
         else
         {
-            rb.gravityScale = fallingGravityScale;
+            rb.gravityScale = _playerConfig.fallingGravityScale;
         }
 
         // Reset jump request at the end of FixedUpdate to catch any missed inputs
         jumpRequested = false;
+        
+        // Flip based on movement direction (разворот при изменении направления движения по X)
+        if (Mathf.Abs(rb.velocity.x) > 0.01f) // Небольшой порог, чтобы избежать изменений при нулевой скорости
+        {
+            skeletonAnimation.skeleton.ScaleX = Mathf.Sign(rb.velocity.x);
+        }
     }
 
     // Optional: Visualize ground check in editor
@@ -167,7 +207,7 @@ public class PlayerOnFlyStateNew : MonoBehaviour
         if (groundCheck != null)
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
+            Gizmos.DrawWireCube(groundCheck.position, groundCheckSize);
         }
     }
     

@@ -8,7 +8,7 @@ public class PlayerOnFlyState : IState
     private bool JumpFlag;
     private int StepFlag = 0;
     
-    public static event Action OnTeleported;
+    // public static event Action OnTeleported;
     
     public PlayerOnFlyState(PlayerController player)
     {
@@ -72,7 +72,7 @@ public class PlayerOnFlyState : IState
                     StepFlag = 0;
                 }
 
-                OnTeleported();
+                // OnTeleported();
 
                 PlayerStats.Instance.playerFlowerTeleportation = PlayerStats.Instance.playerFlowerTeleportation - PlayerStats.Instance.teleportTax;
             }
