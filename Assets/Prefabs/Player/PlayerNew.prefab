@@ -164,6 +164,7 @@ GameObject:
   - component: {fileID: 212402615354450882}
   - component: {fileID: 9217575954283961010}
   - component: {fileID: 6411971802693086378}
+  - component: {fileID: 4990927520157596133}
   m_Layer: 0
   m_Name: PlayerNew
   m_TagString: Untagged
@@ -279,3 +280,29 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   skeletonAnimation: {fileID: 1683329396145787834}
+--- !u!114 &4990927520157596133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8080488003090456739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: beaae2a19b7b3564da46d717821902e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHP: 100
+  playerKillPower: 100
+  playerEssention: 0
+  playerFlowerTeleportation: 100
+  playerCristalTeleportation: 0
+  playerCloudTeleportation: 0
+  playerMaxEssention: 3
+  essenceDoorstep: 10
+  WinCount: 100
+  teleportTax: 0
+  teleportPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
