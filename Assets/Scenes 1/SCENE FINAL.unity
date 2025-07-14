@@ -395,7 +395,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!81 &729916702
 AudioListener:
   m_ObjectHideFlags: 0
@@ -718,6 +718,10 @@ PrefabInstance:
     - target: {fileID: 986744230262029412, guid: 57bb6b8cf3cf218419f5a9233a97a420, type: 3}
       propertyPath: m_Name
       value: URPCamera
+      objectReference: {fileID: 0}
+    - target: {fileID: 986744230262029412, guid: 57bb6b8cf3cf218419f5a9233a97a420, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
