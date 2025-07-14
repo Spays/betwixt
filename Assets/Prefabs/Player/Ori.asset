@@ -15,7 +15,7 @@ MonoBehaviour:
   airAcceleration: 12
   maxAirSpeed: 6
   jumpForce: 5
-  doubleJumpForce: 4
+  doubleJumpForce: 3
   enableDoubleJump: 1
   jumpCutMultiplier: 0.4
   risingGravityScale: 0.8
