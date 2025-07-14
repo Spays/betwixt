@@ -47,7 +47,7 @@ public class AudioManager : Singleton<AudioManager>
             soundObject.transform.SetParent(transform);
             
             AudioSource audioSource = soundObject.AddComponent<AudioSource>();
-            audioSource.clip = s.clip;
+            audioSource.clip = ws.clip;
             audioSource.volume = s.volume;
             audioSource.pitch = s.pitch;
             audioSource.loop = s.loop;
