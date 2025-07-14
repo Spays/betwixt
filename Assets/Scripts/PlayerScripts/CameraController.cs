@@ -10,12 +10,12 @@ public class CameraController : Singleton<CameraController>
 
     private void OnEnable()
     {
-        PlayerOnFlyState.OnTeleported += CameraTeleporting;
+        PlayerOnFlyStateNew.OnTeleported += CameraTeleporting;
     }
 
     private void OnDisable()
     {
-        PlayerOnFlyState.OnTeleported -= CameraTeleporting;
+        PlayerOnFlyStateNew.OnTeleported -= CameraTeleporting;
     }
 
     private void CameraTeleporting()
