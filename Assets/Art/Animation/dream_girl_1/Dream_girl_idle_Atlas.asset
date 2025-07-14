@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6b194f808b1af6499c93410e504af42, type: 3}
   m_Name: Dream_girl_idle_Atlas
   m_EditorClassIdentifier: 
-  atlasFile: {fileID: 4900000, guid: cc2e2c3400ea57740a307364f28ccbab, type: 3}
+  atlasFile: {fileID: 4900000, guid: ac1189c6ee6b9774aa3ba2b131a1a3e6, type: 3}
   materials:
-  - {fileID: 2100000, guid: 9c4c0df90a50766429d493396d41ad66, type: 2}
+  - {fileID: 2100000, guid: b74b51a60b24ca243b225d4066522f3a, type: 2}

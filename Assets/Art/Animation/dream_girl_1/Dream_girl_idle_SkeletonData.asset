@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Dream_girl_idle_SkeletonData
   m_EditorClassIdentifier: 
   atlasAssets:
-  - {fileID: 11400000, guid: ce5042e9c9a64c74a837196425bed5a2, type: 2}
+  - {fileID: 11400000, guid: d0f3c37d1bb166948997cb57a41b454c, type: 2}
   scale: 0.01
-  skeletonJSON: {fileID: 4900000, guid: 520636454a719c04cbf87d2cbc9f73ac, type: 3}
+  skeletonJSON: {fileID: 4900000, guid: 5cbab517f57b1734585d50865dfcdca4, type: 3}
   isUpgradingBlendModeMaterials: 0
   blendModeMaterials:
     requiresBlendModeMaterials: 0
@@ -28,4 +28,4 @@ MonoBehaviour:
   toAnimation: []
   duration: []
   defaultMix: 0.2
-  controller: {fileID: 9100000, guid: 5965b0b766df3ac48972adf8bdb72c9a, type: 2}
+  controller: {fileID: 0}

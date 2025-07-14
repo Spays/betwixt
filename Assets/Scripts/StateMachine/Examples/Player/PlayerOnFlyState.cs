@@ -1,58 +1,5 @@
 using System;
-using Unity.VisualScripting;using UnityEngine;
-using UnityEngine.SceneManagement;
-
-//_______________________________________
-//состояние на земле
-
-
-public class PlayerOnGroundState : IState
-{
-    private PlayerController player;
-    private float jumpTimer = 0f;
-    
-    
-
-    public PlayerOnGroundState(PlayerController player)
-    {
-        this.player = player;
-    }
-    public void Execute()
-    {
-        
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            player.Jump();
-            player.ChangeState<PlayerOnFlyState>();
-        }
-        else if (Input.GetKeyDown(KeyCode.Q))
-        {
-            player.LeftJump();
-            player.ChangeState<PlayerOnFlyState>();
-        }
-        else if (Input.GetKeyDown(KeyCode.E))
-        {
-            player.RightJump();
-            player.ChangeState<PlayerOnFlyState>();
-        }
-    }
-
-    public void Enter()
-    {
-        
-        Debug.Log("Игрок на земле");
-        
-    }
-
-    public void Exit()
-    {
-        // Ничего не делаем при выходе
-    }
-    public void OnCollisionEnter2D(Collision2D collision)
-    {
-        
-    }
-}
+using UnityEngine;
 
 public class PlayerOnFlyState : IState
 {
@@ -89,24 +36,24 @@ public class PlayerOnFlyState : IState
             player.RightJump();
             JumpFlag = false;
         }
-        else if (Input.GetKeyDown(KeyCode.A))
-        {
-            player.LeftDesh();
-            Debug.Log("Левый дэш");
-            //JumpFlag = false;
-        }
-        else if (Input.GetKeyDown(KeyCode.S))
-        {
-            player.RightDesh();
-            Debug.Log("Правый дэш");
-            //JumpFlag = false;
-        }
-        else if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            player.DownJump();
-            Debug.Log("Прыжок вниз");
-            //JumpFlag = false;
-        }
+        // else if (Input.GetKeyDown(KeyCode.A))
+        // {
+        //     player.LeftDesh();
+        //     Debug.Log("Левый дэш");
+        //     //JumpFlag = false;
+        // }
+        // else if (Input.GetKeyDown(KeyCode.S))
+        // {
+        //     player.RightDesh();
+        //     Debug.Log("Правый дэш");
+        //     //JumpFlag = false;
+        // }
+        // else if (Input.GetKeyDown(KeyCode.LeftShift))
+        // {
+        //     player.DownJump();
+        //     Debug.Log("Прыжок вниз");
+        //     //JumpFlag = false;
+        // }
         else if (Input.GetKeyDown(KeyCode.T))
         {
             Debug.Log(PlayerStats.Instance);
