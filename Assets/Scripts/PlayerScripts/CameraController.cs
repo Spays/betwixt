@@ -1,4 +1,5 @@
 using DG.Tweening;
+using PlayerScripts;
 using UnityEngine;
 
 public class CameraController : Singleton<CameraController>
@@ -8,14 +9,17 @@ public class CameraController : Singleton<CameraController>
 
     [Header("Nightmare")]
     public float timeBeforeNightmare = 5f;
-    [SerializeField] private SpriteRenderer spriteRenderer; // Ссылка на SpriteRenderer
-    public Color FadedColor;
-    public float targetAlpha;
-    [SerializeField] private float duration = 10f; // Продолжительность анимации в секундах
+    [SerializeField] private NightmareController nightmareController;
+
+    public Transform platformParent;
+    
+    private PlatfromChanger[] _platfromChangers;
     
     private void OnEnable()
     {
         StartTimer();
+        
+        _platfromChangers = platformParent.GetComponentsInChildren<PlatfromChanger>();
         
         PlayerOnFlyStateNew.OnTeleported += CameraTeleporting;
     }
@@ -48,7 +52,7 @@ public class CameraController : Singleton<CameraController>
         timer = 0f;
         triggered = false;
         
-        spriteRenderer.color = FadedColor;
+        nightmareController.Reset();
     }
     
     
@@ -66,23 +70,12 @@ public class CameraController : Singleton<CameraController>
             Debug.Log("Nightmare started");
             // OnNightmareStart.Invoke(); // подключаем в инспекторе анимацию/эффекты/бой
             // enabled = false; // выключаем, чтобы не срабатывало снова
-            Fade();
-        }
-    }
-    
-    // Метод для изменения прозрачности
-    public void Fade()
-    {
-        if (spriteRenderer != null)
-        {
-            // Используем DOFade для твининга альфа-канала
-            spriteRenderer.DOFade(targetAlpha, duration)
-                .SetEase(Ease.InOutSine) // Опционально: тип easing (плавность анимации)
-                .OnComplete(() => Debug.Log("Анимация прозрачности завершена!")); // Опционально: коллбек по завершению
-        }
-        else
-        {
-            Debug.LogError("SpriteRenderer не найден!");
+            nightmareController.Fade();
+
+            foreach (var platfromChanger in _platfromChangers)
+            {
+                platfromChanger.Show();
+            }
         }
     }
 }
