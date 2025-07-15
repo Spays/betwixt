@@ -32,7 +32,10 @@ public class GameManager : Singleton<GameManager>
     {
         base.Awake();
     }
-    
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
     // Изменение состояния игры
     public void ChangeState(GameState newState)
     {

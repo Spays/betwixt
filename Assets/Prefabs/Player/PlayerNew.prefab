@@ -80,8 +80,8 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1250440979
+  m_SortingLayer: 2
   m_SortingOrder: 3
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &1683329396145787834
@@ -164,7 +164,7 @@ GameObject:
   - component: {fileID: 212402615354450882}
   - component: {fileID: 9217575954283961010}
   - component: {fileID: 6411971802693086378}
-  - component: {fileID: 4990927520157596133}
+  - component: {fileID: 5488522550157015136}
   m_Layer: 0
   m_Name: PlayerNew
   m_TagString: Untagged
@@ -182,7 +182,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3090247428420783821}
@@ -280,7 +280,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   skeletonAnimation: {fileID: 1683329396145787834}
---- !u!114 &4990927520157596133
+--- !u!114 &5488522550157015136
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -292,8 +292,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: beaae2a19b7b3564da46d717821902e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHP: 100
-  playerKillPower: 100
+  playerHP: 1
+  playerKillPower: 1
   playerEssention: 0
   playerFlowerTeleportation: 100
   playerCristalTeleportation: 0
@@ -303,6 +303,8 @@ MonoBehaviour:
   WinCount: 100
   teleportTax: 0
   teleportPoints:
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
