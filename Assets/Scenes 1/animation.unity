@@ -767,6 +767,26 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68c848478e8bbdc4faec7a714045305a, type: 3}
+--- !u!1 &565909738 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 116671679038323356, guid: 661e714298c176d45b34e12952c05b39, type: 3}
+  m_PrefabInstance: {fileID: 1858339892}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &565909742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 565909738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa3643a4262409449bdaf625ebea3c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swayAngle: 10
+  swayDuration: 1.5
+  swayEase: 4
 --- !u!1 &692962748
 GameObject:
   m_ObjectHideFlags: 0
@@ -1711,26 +1731,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: LightSpot (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 4859947235791612715, guid: 661e714298c176d45b34e12952c05b39, type: 3}
-      propertyPath: NoiseModule.enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4859947235791612715, guid: 661e714298c176d45b34e12952c05b39, type: 3}
-      propertyPath: TrailModule.enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4859947235791612715, guid: 661e714298c176d45b34e12952c05b39, type: 3}
-      propertyPath: TriggerModule.enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4859947235791612715, guid: 661e714298c176d45b34e12952c05b39, type: 3}
-      propertyPath: CollisionModule.enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4859947235791612715, guid: 661e714298c176d45b34e12952c05b39, type: 3}
-      propertyPath: ExternalForcesModule.enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7291381582965046978, guid: 661e714298c176d45b34e12952c05b39, type: 3}
       propertyPath: m_LocalPosition.x
       value: 58.9
@@ -1771,14 +1771,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8117889374266312073, guid: 661e714298c176d45b34e12952c05b39, type: 3}
-      propertyPath: m_Materials.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8117889374266312073, guid: 661e714298c176d45b34e12952c05b39, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 3c035504adcc1424b87edfe05c0bd94a, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3323,10 +3315,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: LightSpot
       objectReference: {fileID: 0}
-    - target: {fileID: 4859947235791612715, guid: 661e714298c176d45b34e12952c05b39, type: 3}
-      propertyPath: SizeModule.enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7291381582965046978, guid: 661e714298c176d45b34e12952c05b39, type: 3}
       propertyPath: m_LocalPosition.x
       value: 55.64
@@ -3370,7 +3358,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 116671679038323356, guid: 661e714298c176d45b34e12952c05b39, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 565909742}
   m_SourcePrefab: {fileID: 100100000, guid: 661e714298c176d45b34e12952c05b39, type: 3}
 --- !u!1 &1882162835 stripped
 GameObject:
