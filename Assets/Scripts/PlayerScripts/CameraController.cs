@@ -1,15 +1,17 @@
+using System.Collections.Generic;
 using DG.Tweening;
 using PlayerScripts;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class CameraController : Singleton<CameraController>
+public class CameraController : MonoBehaviour
 {
     public GameObject[] CameraTpPoints;
     private int _currentLevel;
 
     [Header("Nightmare")]
     public float timeBeforeNightmare = 5f;
-    [SerializeField] private NightmareController nightmareController;
+    [FormerlySerializedAs("nightmareController")] [SerializeField] private NightmareBackground nightmareBackground;
 
     public Transform platformParent;
     
@@ -52,7 +54,7 @@ public class CameraController : Singleton<CameraController>
         timer = 0f;
         triggered = false;
         
-        nightmareController.Reset();
+        nightmareBackground.Reset();
     }
     
     
@@ -70,12 +72,14 @@ public class CameraController : Singleton<CameraController>
             Debug.Log("Nightmare started");
             // OnNightmareStart.Invoke(); // подключаем в инспекторе анимацию/эффекты/бой
             // enabled = false; // выключаем, чтобы не срабатывало снова
-            nightmareController.Fade();
+            nightmareBackground.Fade();
 
             foreach (var platfromChanger in _platfromChangers)
             {
                 platfromChanger.Show();
             }
+            
+            
         }
     }
 }
