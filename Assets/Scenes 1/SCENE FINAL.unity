@@ -1957,11 +1957,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5645160982958924212, guid: 7149ac0ac952c494ab37886db45f97d5, type: 3}
       propertyPath: teleportTax
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5645160982958924212, guid: 7149ac0ac952c494ab37886db45f97d5, type: 3}
       propertyPath: essenceDoorstep
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5645160982958924212, guid: 7149ac0ac952c494ab37886db45f97d5, type: 3}
       propertyPath: playerFlowerTeleportation
