@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   airAcceleration: 15
   maxAirSpeed: 6
-  jumpForce: 6
-  doubleJumpForce: 6
+  jumpForce: 5
+  doubleJumpForce: 5
   enableDoubleJump: 1
   jumpCutMultiplier: 0.4
   risingGravityScale: 1.2
