@@ -1,3 +1,4 @@
+using System;
 using Config;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -16,7 +17,7 @@ public class GameManager : Singleton<GameManager>
     
     public Config1 Config;
     
-    private GameState currentState = GameState.MainMenu;
+    [SerializeField] private GameState currentState = GameState.MainMenu;
     
     // События для подписки других скриптов
     public delegate void OnStateChanged(GameState newState);
@@ -27,14 +28,28 @@ public class GameManager : Singleton<GameManager>
     { 
         get { return currentState; }
     }
-    
+/*
+    public void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                //MainMenuCanvas.SetActive(!MainMenuCanvas.activeSelf);
+                PauseGame();
+            }
+        }
+    }
+*/
     protected override void Awake()
     {
         base.Awake();
     }
     public void ExitGame()
     {
+        Debug.Log("GameExit");
         Application.Quit();
+        Debug.Log("NotExit");
     }
     // Изменение состояния игры
     public void ChangeState(GameState newState)
@@ -78,6 +93,7 @@ public class GameManager : Singleton<GameManager>
     public void StartGame()
     {
         ChangeState(GameState.Playing);
+        SceneManager.LoadScene(1);
     }
     
     public void PauseGame()
@@ -107,4 +123,5 @@ public class GameManager : Singleton<GameManager>
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         ChangeState(GameState.Playing);
     }
+    
 }

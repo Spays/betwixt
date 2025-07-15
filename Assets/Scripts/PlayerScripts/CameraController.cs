@@ -70,10 +70,13 @@ public class CameraController : MonoBehaviour
 
     public void StartTimer()
     {
+        
         if (isPlaying == false)
         {
             return;
         }
+        
+        AudioManager.Instance.PlayMusic("dreamy");
         
         timer = 0f;
         triggered = false;
@@ -98,6 +101,7 @@ public class CameraController : MonoBehaviour
 
         if (triggered == false && timer >= timeBeforeNightmare)
         {
+            AudioManager.Instance.PlayMusic("nightmare");
             triggered = true;
             Debug.Log("Nightmare started");
             // OnNightmareStart.Invoke(); // подключаем в инспекторе анимацию/эффекты/бой
