@@ -13,15 +13,11 @@ public class CameraController : MonoBehaviour
     public float timeBeforeNightmare = 5f;
     [FormerlySerializedAs("nightmareController")] [SerializeField] private NightmareBackground nightmareBackground;
 
-    public Transform platformParent;
-    
-    private PlatfromChanger[] _platfromChangers;
+    public Transform[] platformParents;
     
     private void OnEnable()
     {
         StartTimer();
-        
-        _platfromChangers = platformParent.GetComponentsInChildren<PlatfromChanger>();
         
         PlayerOnFlyStateNew.OnTeleported += CameraTeleporting;
     }
@@ -74,12 +70,19 @@ public class CameraController : MonoBehaviour
             // enabled = false; // выключаем, чтобы не срабатывало снова
             nightmareBackground.Fade();
 
-            foreach (var platfromChanger in _platfromChangers)
+            var platfromChangers = platformParents[_currentLevel].GetComponentsInChildren<PlatfromChanger>();
+            
+            foreach (var platfromChanger in platfromChangers)
             {
                 platfromChanger.Show();
             }
             
+            var removwers = platformParents[_currentLevel].GetComponentsInChildren<NightmarePlatformRemove>();
             
+            foreach (var platfromChanger in removwers)
+            {
+                platfromChanger.Remove();
+            }
         }
     }
 }
