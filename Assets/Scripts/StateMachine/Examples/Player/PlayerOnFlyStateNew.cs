@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerOnFlyStateNew : MonoBehaviour
 {
-    [SerializeField] private PlayerConfig _playerConfig;
+    public PlayerConfig _playerConfig;
     
     [Header("Ground Check")]
     [SerializeField] private Transform groundCheck; // Position to check for ground (e.g., feet)
