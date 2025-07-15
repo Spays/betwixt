@@ -15,6 +15,9 @@ public class SlideshowController : MonoBehaviour
 
     void Start()
     {
+        controls = new PlayerInputActions();
+        controls.Player.Enable(); // Включаем Action Map "Player"
+        
         // Проверка наличия слайдов
         if (slides == null || slides.Length == 0)
         {
@@ -45,10 +48,11 @@ public class SlideshowController : MonoBehaviour
         InvokeRepeating(nameof(NextSlide), slideDuration, slideDuration);
     }
 
+    private PlayerInputActions controls;
     void Update()
     {
         // Пропуск по клику
-        if (isPlaying && Input.GetMouseButtonDown(0))
+        if (isPlaying && controls.Player.Jump.WasReleasedThisFrame())
         {
             SkipToNextSlide();
         }
@@ -109,17 +113,12 @@ public class SlideshowController : MonoBehaviour
         isPlaying = false;
         CancelInvoke(); // Остановка всех вызовов
         
-        // Проверка и загрузка сцены
-        if (SceneExists("GameScene"))
-        {
-            SceneManager.LoadScene("GameScene");
-        }
-        else
-        {
-            Debug.LogError("Сцена 'GameScene' не найдена!");
-            // Альтернатива: выводим сообщение или активируем объект
-        }
+        canvasGroups[currentSlideIndex].DOFade(0, fadeDuration);
+        
+        cameraController.StartGame();
     }
+    
+    public CameraController cameraController;
 
     bool SceneExists(string sceneName)
     {

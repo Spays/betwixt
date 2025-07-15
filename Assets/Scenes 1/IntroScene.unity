@@ -355,7 +355,7 @@ Transform:
   m_GameObject: {fileID: 214297251}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 331.77612, y: 207.8, z: 0}
+  m_LocalPosition: {x: -272, y: 207.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -603,7 +603,11 @@ MonoBehaviour:
   - {fileID: 411404580}
   - {fileID: 803462088}
   - {fileID: 2109434565}
-  StepFlag: 0
+  timeBeforeNightmare: 5
+  nightmareBackground: []
+  platformParents: []
+  player: {fileID: 0}
+  playerConfigs: []
 --- !u!114 &729916706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -876,7 +880,11 @@ MonoBehaviour:
   - {fileID: 411404580}
   - {fileID: 803462088}
   - {fileID: 2109434565}
-  StepFlag: 0
+  timeBeforeNightmare: 5
+  nightmareBackground: []
+  platformParents: []
+  player: {fileID: 0}
+  playerConfigs: []
 --- !u!1001 &1437495818
 PrefabInstance:
   m_ObjectHideFlags: 0

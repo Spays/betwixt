@@ -17,14 +17,26 @@ public class CameraController : MonoBehaviour
     
     public NightmareBackground[] nightmareBackground;
     public Transform[] platformParents;
+    public Transform[] globes;
 
     public PlayerOnFlyStateNew player;
     public PlayerConfig[]  playerConfigs;
+
+    private bool isPlaying;
+    
+    public void StartGame()
+    {
+        isPlaying = true;
+        StartTimer();
+
+        foreach (var g in globes)
+        {
+            g.gameObject.SetActive(false);
+        }
+    }
     
     private void OnEnable()
     {
-        StartTimer();
-        
         PlayerOnFlyStateNew.OnTeleported += CameraTeleporting;
     }
 
@@ -35,6 +47,11 @@ public class CameraController : MonoBehaviour
 
     private void CameraTeleporting()
     {
+        if (isPlaying == false)
+        {
+            return;
+        }
+        
         Destroy(_current?.gameObject);
         
         if (_currentLevel < CameraTpPoints.Length)
@@ -53,6 +70,11 @@ public class CameraController : MonoBehaviour
 
     public void StartTimer()
     {
+        if (isPlaying == false)
+        {
+            return;
+        }
+        
         timer = 0f;
         triggered = false;
         
@@ -67,6 +89,11 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
+        if (isPlaying == false)
+        {
+            return;
+        }
+        
         timer += Time.deltaTime;
 
         if (triggered == false && timer >= timeBeforeNightmare)
@@ -78,6 +105,8 @@ public class CameraController : MonoBehaviour
             
             _current.Fade();
 
+            globes[_currentLevel].gameObject.SetActive(true);
+            
             if (_currentLevel >= platformParents.Length)
             {
                 return;
