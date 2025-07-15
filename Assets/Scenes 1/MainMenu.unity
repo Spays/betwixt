@@ -259,6 +259,51 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!1 &255112203
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 255112205}
+  - component: {fileID: 255112204}
+  m_Layer: 0
+  m_Name: UIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &255112204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 255112203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f6c341699be43140a6df0a21d97e68e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UICanvas: {fileID: 936734407}
+--- !u!4 &255112205
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 255112203}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10.929501, y: 2.6228397, z: -0.1807686}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &400133771
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -331,6 +376,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d31607f11444e959594b570b5b7c8e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &936734407 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9174572489944108520, guid: 98c2076dd77a3b445bdc3d2992474855, type: 3}
+  m_PrefabInstance: {fileID: 4898754388722170614}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1543983254
 GameObject:
   m_ObjectHideFlags: 0
@@ -837,7 +887,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9174572489944108520, guid: 98c2076dd77a3b445bdc3d2992474855, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -856,3 +906,4 @@ SceneRoots:
   - {fileID: 1649033124}
   - {fileID: 3787089589563888063}
   - {fileID: 4898754388722170614}
+  - {fileID: 255112205}

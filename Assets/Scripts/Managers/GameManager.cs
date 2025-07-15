@@ -1,3 +1,4 @@
+using System;
 using Config;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -27,7 +28,19 @@ public class GameManager : Singleton<GameManager>
     { 
         get { return currentState; }
     }
-    
+
+    public void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                //MainMenuCanvas.SetActive(!MainMenuCanvas.activeSelf);
+                PauseGame();
+            }
+        }
+    }
+
     protected override void Awake()
     {
         base.Awake();
@@ -78,6 +91,7 @@ public class GameManager : Singleton<GameManager>
     public void StartGame()
     {
         ChangeState(GameState.Playing);
+        SceneManager.LoadScene(1);
     }
     
     public void PauseGame()
@@ -107,4 +121,5 @@ public class GameManager : Singleton<GameManager>
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         ChangeState(GameState.Playing);
     }
+    
 }
