@@ -1602,6 +1602,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1309979098626766958}
     m_Modifications:
+    - target: {fileID: 1423426602300371398, guid: 4a93e8377ebebae419feda7787288e90, type: 3}
+      propertyPath: _parentRenderer
+      value: 
+      objectReference: {fileID: 1027505612198116142}
     - target: {fileID: 3596582879044801048, guid: 4a93e8377ebebae419feda7787288e90, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.62425584
@@ -2130,6 +2134,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7813489048199453890}
     m_Modifications:
+    - target: {fileID: 1423426602300371398, guid: 4a93e8377ebebae419feda7787288e90, type: 3}
+      propertyPath: _parentRenderer
+      value: 
+      objectReference: {fileID: 3735231133024227340}
     - target: {fileID: 3596582879044801048, guid: 4a93e8377ebebae419feda7787288e90, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.605509
@@ -2361,6 +2369,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6369153826732717390, guid: 9d2b8d3ecc36649448e1c08931867220, type: 3}
   m_PrefabInstance: {fileID: 4993578690482690133}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &3735231133024227340 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8546413380255991897, guid: 9d2b8d3ecc36649448e1c08931867220, type: 3}
+  m_PrefabInstance: {fileID: 4993578690482690133}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7813489048199453890 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2964450168813585559, guid: 9d2b8d3ecc36649448e1c08931867220, type: 3}
@@ -2587,6 +2600,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1954607708094093399}
     m_Modifications:
+    - target: {fileID: 1423426602300371398, guid: 4a93e8377ebebae419feda7787288e90, type: 3}
+      propertyPath: _parentRenderer
+      value: 
+      objectReference: {fileID: 414856557348158589}
     - target: {fileID: 3596582879044801048, guid: 4a93e8377ebebae419feda7787288e90, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.9263876
@@ -2657,6 +2674,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3668694118099070472}
     m_Modifications:
+    - target: {fileID: 1423426602300371398, guid: 4a93e8377ebebae419feda7787288e90, type: 3}
+      propertyPath: _parentRenderer
+      value: 
+      objectReference: {fileID: 8090615716060352283}
     - target: {fileID: 3596582879044801048, guid: 4a93e8377ebebae419feda7787288e90, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.8981185
