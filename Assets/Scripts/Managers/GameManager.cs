@@ -43,6 +43,8 @@ public class GameManager : Singleton<GameManager>
 */
     protected override void Awake()
     {
+        Screen.SetResolution(1920, 1080, true);
+        
         base.Awake();
     }
     public void ExitGame()

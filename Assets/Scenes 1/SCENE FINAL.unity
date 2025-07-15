@@ -1419,7 +1419,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 321088947}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4f6c341699be43140a6df0a21d97e68e, type: 3}
   m_Name: 
@@ -1707,6 +1707,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6271443219232688490, guid: b3fed69c7ce21134ea01a20e133805e4, type: 3}
+      propertyPath: music.Array.data[0].loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6271443219232688490, guid: b3fed69c7ce21134ea01a20e133805e4, type: 3}
+      propertyPath: music.Array.data[1].loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6271443219232688490, guid: b3fed69c7ce21134ea01a20e133805e4, type: 3}
+      propertyPath: music.Array.data[0].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6271443219232688490, guid: b3fed69c7ce21134ea01a20e133805e4, type: 3}
+      propertyPath: music.Array.data[1].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6271443219232688490, guid: b3fed69c7ce21134ea01a20e133805e4, type: 3}
+      propertyPath: music.Array.data[0].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6271443219232688490, guid: b3fed69c7ce21134ea01a20e133805e4, type: 3}
+      propertyPath: music.Array.data[1].volume
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1869,6 +1893,10 @@ PrefabInstance:
     - target: {fileID: 488992319806938776, guid: 92b4c01ee440509478fd8836e9c32680, type: 3}
       propertyPath: m_Name
       value: slides
+      objectReference: {fileID: 0}
+    - target: {fileID: 6728915656528374896, guid: 92b4c01ee440509478fd8836e9c32680, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6759360048745887845, guid: 92b4c01ee440509478fd8836e9c32680, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2262,6 +2290,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 942593411375823725, guid: b9d4d4af8b6940247b17cabd8b5a655b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 942593411375823725, guid: b9d4d4af8b6940247b17cabd8b5a655b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3435928618565702708, guid: b9d4d4af8b6940247b17cabd8b5a655b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 40.92992
