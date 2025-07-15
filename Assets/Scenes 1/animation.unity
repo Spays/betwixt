@@ -987,7 +987,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  StepFlag: 0
+  timeBeforeNightmare: 5
+  nightmareBackground: {fileID: 0}
+  platformParent: {fileID: 0}
 --- !u!114 &729916706
 MonoBehaviour:
   m_ObjectHideFlags: 0
