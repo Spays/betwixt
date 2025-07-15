@@ -9,7 +9,7 @@ public class ResurcesManager : Singleton<ResurcesManager>
 {
    public GameObject Player;
 
-   private void OnEnable()
+   private void Awake()
    {
       HealResurce.SendMessage += AddResurces;
       DamageResurce.SendMessage += AddResurces;
@@ -20,7 +20,7 @@ public class ResurcesManager : Singleton<ResurcesManager>
       TeleportFlowerResurce.SendMessage += AddResurces;
    }
 
-   private void OnDisable()
+   private void OnDestroy()
    {
       HealResurce.SendMessage -= AddResurces;
       DamageResurce.SendMessage -= AddResurces;
