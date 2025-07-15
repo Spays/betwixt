@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerStats : Singleton<PlayerStats>
+public class PlayerStats : MonoBehaviour
 {
     public int playerHP = 100;
     public int playerKillPower = 100;
@@ -18,6 +18,13 @@ public class PlayerStats : Singleton<PlayerStats>
     public int teleportTax;
     
     public GameObject[] teleportPoints;
+    
+    public static PlayerStats Instance { get; private set; }
+    
+    protected virtual void Awake()
+    {
+        Instance = this;
+    }
     
     private void OnEnable()
     {
