@@ -8,7 +8,7 @@ using UnityEngine.Serialization;
 public class CameraController : MonoBehaviour
 {
     public GameObject[] CameraTpPoints;
-    private int _currentLevel;
+    public static int _currentLevel;
 
     [Header("Nightmare")]
     public float timeBeforeNightmare = 5f;
@@ -26,6 +26,7 @@ public class CameraController : MonoBehaviour
     
     public void StartGame()
     {
+        _currentLevel = 0;
         isPlaying = true;
         StartTimer();
 
@@ -61,11 +62,11 @@ public class CameraController : MonoBehaviour
 
             StartTimer();
         }
-        else
-        {
-            transform.position = CameraTpPoints[_currentLevel].transform.position;
-            StartTimer();
-        }
+        // else
+        // {
+        //     transform.position = CameraTpPoints[_currentLevel].transform.position;
+        //     StartTimer();
+        // }
     }
 
     public void StartTimer()

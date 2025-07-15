@@ -13,6 +13,11 @@ public class SlideshowController : MonoBehaviour
     private bool isPlaying = true;
     private CanvasGroup[] canvasGroups;
 
+    private void OnDestroy()
+    {
+        controls.Player.Disable(); // Отключаем Action Map
+    }
+    
     void Start()
     {
         controls = new PlayerInputActions();

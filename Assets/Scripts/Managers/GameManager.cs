@@ -95,7 +95,7 @@ public class GameManager : Singleton<GameManager>
     public void StartGame()
     {
         ChangeState(GameState.Playing);
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("SCENE FINAL");
     }
     
     public void PauseGame()

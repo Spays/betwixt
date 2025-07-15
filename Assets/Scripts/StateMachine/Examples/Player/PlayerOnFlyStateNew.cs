@@ -57,7 +57,7 @@ public class PlayerOnFlyStateNew : MonoBehaviour
     private int StepFlag = 0;
     private void Update()
     {
-        if (isGrounded == false && controls.Player.Teleport.WasPressedThisFrame())
+        if (isGrounded == false && controls.Player.Teleport.WasPressedThisFrame() && CameraController._currentLevel < 6)
         {
             Debug.Log(PlayerStats.Instance);
             if(PlayerStats.Instance.playerFlowerTeleportation >= PlayerStats.Instance.essenceDoorstep)
