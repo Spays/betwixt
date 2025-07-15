@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using DG.Tweening;
+using Player;
 using PlayerScripts;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -11,9 +12,14 @@ public class CameraController : MonoBehaviour
 
     [Header("Nightmare")]
     public float timeBeforeNightmare = 5f;
-    [FormerlySerializedAs("nightmareController")] [SerializeField] private NightmareBackground nightmareBackground;
 
+    private NightmareBackground _current;
+    
+    public NightmareBackground[] nightmareBackground;
     public Transform[] platformParents;
+
+    public PlayerOnFlyStateNew player;
+    public PlayerConfig[]  playerConfigs;
     
     private void OnEnable()
     {
@@ -29,7 +35,9 @@ public class CameraController : MonoBehaviour
 
     private void CameraTeleporting()
     {
-        if (_currentLevel < CameraTpPoints.Length-1)
+        Destroy(_current?.gameObject);
+        
+        if (_currentLevel < CameraTpPoints.Length)
         {
             transform.position = CameraTpPoints[_currentLevel].transform.position;
             _currentLevel++;
@@ -39,8 +47,6 @@ public class CameraController : MonoBehaviour
         else
         {
             transform.position = CameraTpPoints[_currentLevel].transform.position;
-            _currentLevel = 0;
-
             StartTimer();
         }
     }
@@ -50,9 +56,10 @@ public class CameraController : MonoBehaviour
         timer = 0f;
         triggered = false;
         
-        nightmareBackground.Reset();
+        _current = nightmareBackground[_currentLevel];
+        nightmareBackground[_currentLevel].Reset();
+        player._playerConfig = playerConfigs[_currentLevel];
     }
-    
     
     private float timer = 0f;
     private bool triggered = false;
@@ -68,8 +75,14 @@ public class CameraController : MonoBehaviour
             Debug.Log("Nightmare started");
             // OnNightmareStart.Invoke(); // подключаем в инспекторе анимацию/эффекты/бой
             // enabled = false; // выключаем, чтобы не срабатывало снова
-            nightmareBackground.Fade();
+            
+            _current.Fade();
 
+            if (_currentLevel >= platformParents.Length)
+            {
+                return;
+            }
+            
             var platfromChangers = platformParents[_currentLevel].GetComponentsInChildren<PlatfromChanger>();
             
             foreach (var platfromChanger in platfromChangers)

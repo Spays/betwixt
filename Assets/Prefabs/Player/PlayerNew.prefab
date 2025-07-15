@@ -164,7 +164,7 @@ GameObject:
   - component: {fileID: 212402615354450882}
   - component: {fileID: 9217575954283961010}
   - component: {fileID: 6411971802693086378}
-  - component: {fileID: 5488522550157015136}
+  - component: {fileID: 5645160982958924212}
   m_Layer: 0
   m_Name: PlayerNew
   m_TagString: Untagged
@@ -273,14 +273,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2eb9fe6230241caa14d76aa8da675ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerConfig: {fileID: 11400000, guid: aa7c0429d9982fa48baf998bca883691, type: 2}
+  _playerConfig: {fileID: 11400000, guid: fe155b0aea5968447bb151d55baae138, type: 2}
   groundCheck: {fileID: 3090247428420783821}
   groundCheckSize: {x: 0.34, y: 0.01}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
   skeletonAnimation: {fileID: 1683329396145787834}
---- !u!114 &5488522550157015136
+--- !u!114 &5645160982958924212
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -303,6 +303,7 @@ MonoBehaviour:
   WinCount: 100
   teleportTax: 0
   teleportPoints:
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
